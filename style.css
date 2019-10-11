@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+}
+
+#popup {
+    width: 500px;
+}
+
+#loader {
+    padding: 40px;
+    text-align: center;
+}
+.lds-circle {
+    display: inline-block;
+    transform: translateZ(1px);
+}
+.lds-circle > div {
+    display: inline-block;
+    width: 51px;
+    height: 51px;
+    margin: 6px;
+    border-radius: 50%;
+    background: #000080;
+    animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+@keyframes lds-circle {
+    0%, 100% {
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+    }
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(1800deg);
+        animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    100% {
+        transform: rotateY(3600deg);
+    }
+}
+
+.tweet {
+    margin: 10px;
+    display: flex;
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+
+.tweet-content {
+    padding-left: 10px;
+}
+
+.tweet-username a {
+    color: #000080;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.tweet-text a {
+    color: #000080;
+}
+
+.tweet-retweet {
+    margin-top: 10px;
+}
+
+.retweet-button {
+    margin-right: 10px;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+    padding: 40px;
+    text-align: center;
+}
+
+#options {
+    margin: 10px;
+}
+
+.field {
+    margin-bottom: 10px;
+}
+
+#submit {
+    margin-right: 10px;
+}
