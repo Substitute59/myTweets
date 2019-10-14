@@ -60,6 +60,9 @@ document.addEventListener('click', e => {
             e.target.after(span);
         });
     }
+    if (e.target.tagName === 'A') {
+        chrome.tabs.create({url: e.target.href, active: false});
+    }
 });
 
 window.addEventListener('scroll', () => {
