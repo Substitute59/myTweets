@@ -33,6 +33,15 @@ chrome.storage.sync.get(['apikey', 'apikeysecret', 'accesstoken', 'accesstokense
             });
             document.getElementById('tweets').innerHTML = tweets;
             document.getElementById('loader').style.display = 'none';
+
+            chrome.cookies.get({
+                "url": "http://developer.chrome.com/extensions/cookies.html",
+                "name": "scroll"
+            }, function(cookie) {
+                if (cookie) {
+                    window.scrollTo(0, parseInt(cookie.value));
+                }
+            });
         });
     } else {
         document.getElementById('tweets').innerHTML = '<div class="error">Veuillez renseigner vos API keys dans les options</div>';
@@ -51,6 +60,22 @@ document.addEventListener('click', e => {
             e.target.after(span);
         });
     }
+});
+
+window.addEventListener('scroll', () => {
+    console.log(window.scrollY);
+    var event = new Date();
+    event.setMinutes(event.getMinutes() + 10);
+    chrome.cookies.set({
+        "name": "scroll",
+        "url": "http://developer.chrome.com/extensions/cookies.html",
+        "value": window.scrollY.toString(),
+        "expirationDate": event.getTime()
+    }, function (cookie) {
+        console.log(JSON.stringify(cookie));
+        console.log(chrome.extension.lastError);
+        console.log(chrome.runtime.lastError);
+    });
 });
 
 String.prototype.parseURL = function() {
