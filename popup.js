@@ -1,16 +1,17 @@
 let tweets = '';
-
+let cb = null;
 let apikey = null;
 let apikeysecret = null;
 let accesstoken = null;
 let accesstokensecret = null;
+
 chrome.storage.sync.get(['apikey', 'apikeysecret', 'accesstoken', 'accesstokensecret'], function(result) {
     apikey = result.apikey;
     apikeysecret = result.apikeysecret;
     accesstoken = result.accesstoken;
     accesstokensecret = result.accesstokensecret;
     if (apikey, apikeysecret, accesstoken, accesstokensecret) {
-        const cb = new Codebird;
+        cb = new Codebird;
         cb.setUseProxy(false);
         cb.setConsumerKey(apikey, apikeysecret);
         cb.setToken(accesstoken, accesstokensecret);
